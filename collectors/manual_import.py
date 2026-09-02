@@ -1,7 +1,8 @@
 """수동 입력 CSV(BDI/SCFI/CCFI, 선대 통계 등 유료·비API 지표)를 DB에 반영.
 
 manual_data/ 폴더 안의 *.csv 파일을 모두 읽어들인다.
-CSV 컬럼: indicator_code,indicator_name,category,unit,region,date,value
+CSV 컬럼: indicator_code,indicator_name,category,unit,region,date,value[,source_url]
+(source_url은 선택 컬럼 - 데이터 출처 링크)
 """
 import csv
 import sys
@@ -48,6 +49,7 @@ def collect():
                 unit=first["unit"],
                 source="manual",
                 region=first.get("region"),
+                source_url=first.get("source_url") or None,
             )
             pairs = [(r["date"], float(r["value"])) for r in indicator_rows]
             upsert_observations(conn, indicator_id, pairs)

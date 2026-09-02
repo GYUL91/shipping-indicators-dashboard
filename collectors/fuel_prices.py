@@ -89,6 +89,7 @@ def collect():
             unit=series["unit"],
             source="eia",
             region="US" if "US" in series["code"] else "Global",
+            source_url=f"https://www.eia.gov/opendata/browser/{series['path']}",
         )
         upsert_observations(conn, indicator_id, data)
         print(f"[fuel_prices] {series['code']}: {len(data)}건 upsert 완료")

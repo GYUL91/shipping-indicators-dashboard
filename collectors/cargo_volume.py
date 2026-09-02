@@ -9,6 +9,7 @@ from db import get_connection, init_db, upsert_indicator, upsert_observations
 
 WB_BASE = "https://api.worldbank.org/v2"
 INDICATOR = "IS.SHP.GOOD.TU"
+SOURCE_URL = f"https://data.worldbank.org/indicator/{INDICATOR}"
 
 # 세계 전체 + 주요 해운/물동량 국가
 COUNTRIES = {
@@ -57,6 +58,7 @@ def collect():
             unit="TEU",
             source="worldbank",
             region=code,
+            source_url=SOURCE_URL,
         )
         upsert_observations(conn, indicator_id, data)
         print(f"[cargo_volume] {code}: {len(data)}건 upsert 완료")

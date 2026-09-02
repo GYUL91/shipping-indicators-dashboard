@@ -1,2 +1,2 @@
-indicator_code,indicator_name,category,unit,region,date,value
-UNCTAD_FLEET,World Merchant Fleet Size,fleet,million DWT,Global,2025-01-01,2200
+indicator_code,indicator_name,category,unit,region,date,value,source_url
+UNCTAD_FLEET,World Merchant Fleet Size,fleet,million DWT,Global,2025-01-01,2200,https://unctad.org/topic/transport-and-trade-logistics/review-of-maritime-transport

@@ -22,6 +22,9 @@ BASE = "https://www.nlic.go.kr/nlic"
 CURRENT_YEAR = date.today().year
 START_YEAR = 2014
 
+INTL_SOURCE_URL = f"{BASE}/transInPortCt.action"
+DOMESTIC_SOURCE_URL = f"{BASE}/seaDmstcOcn.action"
+
 DATE_RE = re.compile(r'class="list_sb_4"[^>]*>([\d-]+)</li>')
 VALUE_RE = re.compile(r'class="list_num_01"[^>]*>([\d,.\-]+)</li>')
 
@@ -127,14 +130,14 @@ def collect():
 
         scfi_id = upsert_indicator(
             conn, "SCFI", "Shanghai Containerized Freight Index",
-            "freight_index", "index", "nlic", "Global",
+            "freight_index", "index", "nlic", "Global", INTL_SOURCE_URL,
         )
         upsert_observations(conn, scfi_id, scfi_pairs)
         print(f"[freight_indices] SCFI: {len(scfi_pairs)}건 upsert 완료")
 
         ccfi_id = upsert_indicator(
             conn, "CCFI", "China Containerized Freight Index",
-            "freight_index", "index", "nlic", "Global",
+            "freight_index", "index", "nlic", "Global", INTL_SOURCE_URL,
         )
         upsert_observations(conn, ccfi_id, ccfi_pairs)
         print(f"[freight_indices] CCFI: {len(ccfi_pairs)}건 upsert 완료")
@@ -146,7 +149,7 @@ def collect():
         dates, values = _fetch_international("BDI")
         bdi_pairs = [(d, v) for d, v in zip(dates, values) if v is not None]
         bdi_id = upsert_indicator(
-            conn, "BDI", "Baltic Dry Index", "freight_index", "index", "nlic", "Global",
+            conn, "BDI", "Baltic Dry Index", "freight_index", "index", "nlic", "Global", INTL_SOURCE_URL,
         )
         upsert_observations(conn, bdi_id, bdi_pairs)
         print(f"[freight_indices] BDI: {len(bdi_pairs)}건 upsert 완료")
@@ -166,7 +169,7 @@ def collect():
             code = f"KR_{direction}_{route}"
             indicator_id = upsert_indicator(
                 conn, code, f"국내 해상운임지수({label}) - {route}",
-                "freight_index", "천원/2TEU", "nlic", route,
+                "freight_index", "천원/2TEU", "nlic", route, DOMESTIC_SOURCE_URL,
             )
             upsert_observations(conn, indicator_id, pairs)
             print(f"[freight_indices] {code}: {len(pairs)}건 upsert 완료")

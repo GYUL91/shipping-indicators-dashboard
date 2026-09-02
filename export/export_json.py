@@ -49,11 +49,11 @@ def _compute_stats(obs):
 def export():
     conn = get_connection()
     indicators = conn.execute(
-        "SELECT id, code, name, category, unit, source, region FROM indicators ORDER BY category, code"
+        "SELECT id, code, name, category, unit, source, region, source_url FROM indicators ORDER BY category, code"
     ).fetchall()
 
     result = []
-    for ind_id, code, name, category, unit, source, region in indicators:
+    for ind_id, code, name, category, unit, source, region, source_url in indicators:
         obs = conn.execute(
             "SELECT date, value FROM observations WHERE indicator_id = ? ORDER BY date",
             (ind_id,),
@@ -66,6 +66,7 @@ def export():
                 "unit": unit,
                 "source": source,
                 "region": region,
+                "source_url": source_url,
                 "stats": _compute_stats(obs),
                 "observations": [{"date": d, "value": v} for d, v in obs],
             }

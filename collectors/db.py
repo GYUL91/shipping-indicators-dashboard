@@ -18,7 +18,8 @@ CREATE TABLE IF NOT EXISTS indicators (
     category TEXT NOT NULL,
     unit TEXT,
     source TEXT NOT NULL,
-    region TEXT
+    region TEXT,
+    source_url TEXT
 );
 
 CREATE TABLE IF NOT EXISTS observations (
@@ -42,21 +43,25 @@ def init_db(conn=None):
     own = conn is None
     conn = conn or get_connection()
     conn.executescript(SCHEMA)
+    existing_cols = {row[1] for row in conn.execute("PRAGMA table_info(indicators)")}
+    if "source_url" not in existing_cols:
+        conn.execute("ALTER TABLE indicators ADD COLUMN source_url TEXT")
     conn.commit()
     if own:
         conn.close()
 
 
-def upsert_indicator(conn, code, name, category, unit, source, region=None):
+def upsert_indicator(conn, code, name, category, unit, source, region=None, source_url=None):
     conn.execute(
         """
-        INSERT INTO indicators (code, name, category, unit, source, region)
-        VALUES (?, ?, ?, ?, ?, ?)
+        INSERT INTO indicators (code, name, category, unit, source, region, source_url)
+        VALUES (?, ?, ?, ?, ?, ?, ?)
         ON CONFLICT(code) DO UPDATE SET
             name=excluded.name, category=excluded.category,
-            unit=excluded.unit, source=excluded.source, region=excluded.region
+            unit=excluded.unit, source=excluded.source, region=excluded.region,
+            source_url=excluded.source_url
         """,
-        (code, name, category, unit, source, region),
+        (code, name, category, unit, source, region, source_url),
     )
     conn.commit()
     row = conn.execute("SELECT id FROM indicators WHERE code = ?", (code,)).fetchone()

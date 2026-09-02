@@ -42,21 +42,9 @@
     border-radius: 10px;
     padding: 18px 20px;
   }
-  .commentary h2 {
-    margin: 0 0 4px;
-    font-size: 15px;
-  }
-  .commentary .sub {
-    color: var(--text-dim);
-    font-size: 11px;
-    margin-bottom: 12px;
-  }
-  .commentary ul {
-    margin: 0;
-    padding-left: 18px;
-    font-size: 13px;
-    line-height: 1.7;
-  }
+  .commentary h2 { margin: 0 0 4px; font-size: 15px; }
+  .commentary .sub { color: var(--text-dim); font-size: 11px; margin-bottom: 12px; }
+  .commentary ul { margin: 0; padding-left: 18px; font-size: 13px; line-height: 1.7; }
   .commentary li { margin-bottom: 4px; }
   .commentary .num { color: var(--accent); font-weight: 600; }
   .commentary .caveat {
@@ -111,17 +99,8 @@
     border-color: var(--accent);
     color: var(--accent);
   }
-  .indicator-row {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    margin-bottom: 2px;
-  }
-  .indicator-row input[type="checkbox"] {
-    flex: 0 0 auto;
-    accent-color: var(--accent);
-    cursor: pointer;
-  }
+  .indicator-row { display: flex; align-items: center; gap: 6px; margin-bottom: 2px; }
+  .indicator-row input[type="checkbox"] { flex: 0 0 auto; accent-color: var(--accent); cursor: pointer; }
   .indicator-row .indicator-btn { margin-bottom: 0; flex: 1 1 auto; }
 
   .compare-bar {
@@ -129,6 +108,7 @@
     align-items: center;
     justify-content: space-between;
     gap: 8px;
+    flex-wrap: wrap;
     background: var(--panel-2);
     border: 1px solid var(--panel-border);
     border-radius: 8px;
@@ -137,6 +117,7 @@
     font-size: 12px;
   }
   .compare-bar span { color: var(--text-dim); }
+  .compare-bar .btn-group { display: flex; gap: 6px; }
   .compare-bar button {
     background: var(--accent);
     color: #04101f;
@@ -147,11 +128,8 @@
     font-weight: 600;
     cursor: pointer;
   }
-  .compare-bar button:disabled {
-    background: #2a3956;
-    color: var(--text-dim);
-    cursor: not-allowed;
-  }
+  .compare-bar button.secondary { background: var(--accent-2); }
+  .compare-bar button:disabled { background: #2a3956; color: var(--text-dim); cursor: not-allowed; }
 
   .main {
     background: var(--panel);
@@ -164,14 +142,48 @@
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
     flex-wrap: wrap;
     gap: 8px;
   }
   .main-header h2 { margin: 0; font-size: 18px; }
   .meta { color: var(--text-dim); font-size: 12px; }
+  .meta a { color: var(--accent); text-decoration: none; }
+  .meta a:hover { text-decoration: underline; }
   .empty { color: var(--text-dim); text-align: center; padding: 80px 0; }
   canvas { max-height: 440px; }
+
+  .description-box {
+    background: var(--panel-2);
+    border: 1px solid var(--panel-border);
+    border-left: 3px solid var(--accent-2);
+    border-radius: 8px;
+    padding: 12px 14px;
+    margin-bottom: 14px;
+    font-size: 12.5px;
+    line-height: 1.6;
+  }
+  .description-box .desc-title { font-weight: 700; margin-bottom: 6px; color: var(--accent-2); }
+  .description-box p { margin: 0 0 6px; }
+  .description-box .desc-tip {
+    margin-top: 6px;
+    padding-top: 6px;
+    border-top: 1px dashed var(--panel-border);
+    color: var(--text-dim);
+  }
+
+  .period-bar { display: flex; gap: 6px; margin-bottom: 14px; flex-wrap: wrap; }
+  .period-btn {
+    background: transparent;
+    border: 1px solid var(--panel-border);
+    color: var(--text-dim);
+    border-radius: 6px;
+    padding: 5px 10px;
+    font-size: 12px;
+    cursor: pointer;
+  }
+  .period-btn:hover { border-color: var(--accent); color: var(--text); }
+  .period-btn.active { background: var(--accent); border-color: var(--accent); color: #04101f; font-weight: 600; }
 
   .stats-grid {
     display: grid;
@@ -187,15 +199,10 @@
   }
   .stat-tile .label { font-size: 11px; color: var(--text-dim); margin-bottom: 4px; }
   .stat-tile .value { font-size: 15px; font-weight: 600; }
-  .stat-tile .sub { font-size: 11px; color: var(--text-dim); margin-top: 2px; }
   .stat-tile .value.pos { color: var(--up); }
   .stat-tile .value.neg { color: var(--down); }
 
-  .event-hint {
-    font-size: 11px;
-    color: var(--text-dim);
-    margin-top: 10px;
-  }
+  .event-hint { font-size: 11px; color: var(--text-dim); margin-top: 10px; }
   .event-detail {
     margin-top: 8px;
     background: var(--panel-2);
@@ -236,6 +243,8 @@
       <h2 id="chart-title">지표를 선택하세요</h2>
       <span class="meta" id="chart-meta"></span>
     </div>
+    <div class="description-box" id="description-box" style="display:none"></div>
+    <div class="period-bar" id="period-bar"></div>
     <div id="chart-wrap"><div class="empty">왼쪽에서 지표를 선택하면 시계열 차트가 표시됩니다.</div></div>
     <div id="stats-wrap"></div>
     <div class="event-hint" id="event-hint"></div>
@@ -250,13 +259,86 @@ const CATEGORY_LABELS = {
   fleet: "선박/선대",
   fuel_price: "유가/연료비",
 };
-
+const COMPARABLE_CATEGORIES = ['freight_index', 'cargo_volume'];
 const COMPARE_COLORS = ["#3aa0ff","#29d3a3","#ff8a5c","#c792ea","#ffd166","#ef476f","#6ee7ff","#a3e635"];
+const PERIODS = [
+  { key: 'all', label: '전체' },
+  { key: '10y', label: '10년' },
+  { key: '5y', label: '5년' },
+  { key: '3y', label: '3년' },
+  { key: '1y', label: '1년' },
+  { key: '6m', label: '6개월' },
+];
+
+const DESCRIPTIONS = {
+  BDI: {
+    title: 'BDI(발틱운임지수)란?',
+    body: [
+      '벌크선(건화물선) 시장의 종합 운임지수입니다. 컨테이너선이 아니라 철광석·석탄·곡물 같은 원자재를 실어나르는 벌크선의 정기용선료를 반영합니다.',
+      'Capesize·Panamax·Supramax·Handysize 4개 선형의 지수를 동일 가중으로 평균해서 산출하며, 1985년 1월 4일 값을 1,000으로 기준삼습니다.',
+      '벌크선은 신조선 공급이 느리게 늘어나는 반면 원자재 수요는 경기에 민감하게 반응해서, BDI는 등락폭이 크고 글로벌 경기 선행지표로도 자주 인용됩니다.',
+    ],
+    tip: '값이 오르면 원자재 수요 증가 또는 선복 부족, 내리면 그 반대로 1차 해석하되 신조선 발주량 같은 공급 측 요인도 함께 보는 게 좋습니다.',
+  },
+  SCFI: {
+    title: 'SCFI(상하이컨테이너운임지수)란?',
+    body: [
+      '상하이발 컨테이너선 15개 항로의 스팟(현물) 운임을 반영합니다. 상하이거래소(SSE)가 2005년부터 발표하며, 컨테이너 화물은 주로 가전·의류 같은 소비재·완제품입니다.',
+    ],
+    tip: 'CCFI와 헷갈리기 쉬운데, SCFI는 "상하이발 스팟 운임"에 집중해 시장 변화에 더 빠르고 예민하게 반응합니다.',
+  },
+  CCFI: {
+    title: 'CCFI(중국컨테이너운임지수)란?',
+    body: [
+      '상하이뿐 아니라 중국 전체 주요 항구에서 출발하는 11개 항로의 운임을 반영합니다. SCFI와 달리 스팟 운임뿐 아니라 선사-화주 간 장기계약 운임 비중도 섞여 있고, 1998년 1월 1일을 1,000으로 기준삼는 더 오래된 지수입니다.',
+    ],
+    tip: 'SCFI보다 변동이 완만하고 다소 후행적으로 움직입니다. 두 지수가 같은 시기에 다르게 움직인다면 "스팟 시장"과 "계약 시장"의 온도차로 해석할 수 있습니다.',
+  },
+  UNCTAD_FLEET: {
+    title: '세계 상선대 규모란?',
+    body: ['전 세계 상선대의 총 규모(재화중량톤수, DWT 기준)입니다. UNCTAD가 매년 Review of Maritime Transport 보고서에서 발표합니다.'],
+    tip: '운임은 수요·공급이 함께 결정합니다. 이 지표는 "공급" 측면 - 실제로 화물을 실어나를 수 있는 선복량이 얼마나 되는지를 보여줍니다.',
+  },
+  EIA_BRENT: {
+    title: '브렌트유란?',
+    body: ['유럽·아프리카·중동산 원유의 국제 기준가입니다. 선박 연료(벙커유)는 원유를 정제해서 만들기 때문에, 브렌트유 가격이 오르면 시차를 두고 벙커유 가격, 나아가 해운사의 연료비 부담도 함께 오르는 경향이 있습니다.'],
+  },
+  EIA_WTI: {
+    title: 'WTI(서부텍사스산 원유)란?',
+    body: ['미국의 원유 기준가로, 브렌트유와 함께 국제 유가의 양대 벤치마크입니다.'],
+  },
+  EIA_DIESEL_US: {
+    title: '미국 디젤 소매가란?',
+    body: ['미국 내 경유(디젤) 소매 가격입니다. 선박이 쓰는 벙커유(중유)와는 다른 유종이지만, 정제마진과 원유가에 함께 연동되어 해상 연료비 흐름을 가늠하는 보조 지표로 참고할 수 있습니다.'],
+  },
+};
+
+function descriptionFor(ind) {
+  if (DESCRIPTIONS[ind.code]) return DESCRIPTIONS[ind.code];
+  if (ind.code.startsWith('KR_XPT_') || ind.code.startsWith('KR_IMP_')) {
+    const dir = ind.code.startsWith('KR_XPT_') ? '수출' : '수입';
+    return {
+      title: `국내 해상운임지수(${dir})란?`,
+      body: ['국제 지수(SCFI 등)와 달리 한국 관세청 수출입 통관 자료를 기반으로, 한국 화주가 실제로 지불한 평균 해상운임을 항로별로 집계한 값입니다 (2TEU 컨테이너 기준, 천원 단위).'],
+      tip: '실측 통관가 기반이라 신뢰도가 높지만, 통관 이후 집계되는 구조라 발표가 다소 지연되고 월 단위로만 갱신됩니다.',
+    };
+  }
+  if (ind.code.startsWith('WB_PORT_TRAFFIC_')) {
+    return {
+      title: '컨테이너 항만 처리량이란?',
+      body: ['해당 국가·지역의 연간 컨테이너 항만 처리량(TEU, 20피트 컨테이너 환산)입니다. 가격이 아니라 "물량" 지표로, 그 나라의 무역 규모와 항만 처리 능력을 보여줍니다.'],
+      tip: 'World Bank가 각국 통계·항만공사 자료를 취합해 매년 발표합니다.',
+    };
+  }
+  return null;
+}
 
 let chartInstance = null;
 let allIndicators = [];
 let allEvents = [];
-let compareSelection = new Set(); // indicator codes, freight_index only
+const compareSelections = { freight_index: new Set(), cargo_volume: new Set() };
+let currentView = null; // {type:'single', code} | {type:'compare', category, mode}
+let currentPeriod = 'all';
 
 function fmt(n) {
   if (n === null || n === undefined) return "-";
@@ -282,8 +364,7 @@ async function main() {
     document.getElementById('chart-wrap').innerHTML =
       '<div class="empty">아직 수집된 데이터가 없습니다. collectors/run_all.py 를 실행해 주세요.</div>';
   } else {
-    const firstBtn = document.querySelector('.indicator-btn');
-    if (firstBtn) firstBtn.click();
+    selectIndicatorByCode(allIndicators[0].code);
   }
 }
 
@@ -302,30 +383,43 @@ function renderSidebar() {
     h3.textContent = CATEGORY_LABELS[cat] || cat;
     section.appendChild(h3);
 
+    const comparable = COMPARABLE_CATEGORIES.includes(cat);
+
     if (cat === 'freight_index') {
       const bar = document.createElement('div');
       bar.className = 'compare-bar';
-      bar.innerHTML = '<span id="compare-count">0개 선택</span><button id="compare-btn" disabled>선택 비교 보기</button>';
+      bar.innerHTML = `<span id="compare-count-freight_index">0개 선택</span>
+        <div class="btn-group"><button id="compare-btn-freight_index" disabled>선택 비교 보기</button></div>`;
+      section.appendChild(bar);
+    } else if (cat === 'cargo_volume') {
+      const bar = document.createElement('div');
+      bar.className = 'compare-bar';
+      bar.innerHTML = `<span id="compare-count-cargo_volume">0개 선택</span>
+        <div class="btn-group">
+          <button id="compare-btn-line-cargo_volume" disabled>선 그래프 비교</button>
+          <button id="compare-btn-bar-cargo_volume" class="secondary" disabled>누적 막대 비교</button>
+        </div>`;
       section.appendChild(bar);
     }
 
     for (const ind of byCategory[cat]) {
-      if (cat === 'freight_index') {
+      if (comparable) {
         const row = document.createElement('div');
         row.className = 'indicator-row';
 
         const cb = document.createElement('input');
         cb.type = 'checkbox';
         cb.addEventListener('change', () => {
-          if (cb.checked) compareSelection.add(ind.code);
-          else compareSelection.delete(ind.code);
-          updateCompareBar();
+          if (cb.checked) compareSelections[cat].add(ind.code);
+          else compareSelections[cat].delete(ind.code);
+          updateCompareBar(cat);
         });
 
         const btn = document.createElement('button');
         btn.className = 'indicator-btn';
+        btn.dataset.code = ind.code;
         btn.textContent = ind.name;
-        btn.addEventListener('click', () => selectIndicator(ind, btn));
+        btn.addEventListener('click', () => selectIndicatorByCode(ind.code));
 
         row.appendChild(cb);
         row.appendChild(btn);
@@ -333,23 +427,74 @@ function renderSidebar() {
       } else {
         const btn = document.createElement('button');
         btn.className = 'indicator-btn';
+        btn.dataset.code = ind.code;
         btn.textContent = ind.name;
-        btn.addEventListener('click', () => selectIndicator(ind, btn));
+        btn.addEventListener('click', () => selectIndicatorByCode(ind.code));
         section.appendChild(btn);
       }
     }
     sidebar.appendChild(section);
   }
 
-  const compareBtn = document.getElementById('compare-btn');
-  if (compareBtn) compareBtn.addEventListener('click', renderComparisonChart);
+  const freightBtn = document.getElementById('compare-btn-freight_index');
+  if (freightBtn) freightBtn.addEventListener('click', () => setCompareView('freight_index', 'normalized-line'));
+
+  const cargoLineBtn = document.getElementById('compare-btn-line-cargo_volume');
+  if (cargoLineBtn) cargoLineBtn.addEventListener('click', () => setCompareView('cargo_volume', 'line'));
+
+  const cargoBarBtn = document.getElementById('compare-btn-bar-cargo_volume');
+  if (cargoBarBtn) cargoBarBtn.addEventListener('click', () => setCompareView('cargo_volume', 'stacked-bar'));
 }
 
-function updateCompareBar() {
-  document.getElementById('compare-count').textContent = `${compareSelection.size}개 선택`;
-  document.getElementById('compare-btn').disabled = compareSelection.size < 2;
+function updateCompareBar(cat) {
+  const n = compareSelections[cat].size;
+  document.getElementById(`compare-count-${cat}`).textContent = `${n}개 선택`;
+  if (cat === 'freight_index') {
+    document.getElementById('compare-btn-freight_index').disabled = n < 2;
+  } else if (cat === 'cargo_volume') {
+    document.getElementById('compare-btn-line-cargo_volume').disabled = n < 2;
+    document.getElementById('compare-btn-bar-cargo_volume').disabled = n < 2;
+  }
 }
 
+function updateSidebarActiveState() {
+  document.querySelectorAll('.indicator-btn').forEach(b => {
+    b.classList.toggle('active', currentView?.type === 'single' && b.dataset.code === currentView.code);
+  });
+}
+
+// ---------- 기간 필터 ----------
+function cutoffDate(period, refDateStr) {
+  if (period === 'all') return null;
+  const d = new Date(refDateStr);
+  if (period === '10y') d.setFullYear(d.getFullYear() - 10);
+  else if (period === '5y') d.setFullYear(d.getFullYear() - 5);
+  else if (period === '3y') d.setFullYear(d.getFullYear() - 3);
+  else if (period === '1y') d.setFullYear(d.getFullYear() - 1);
+  else if (period === '6m') d.setMonth(d.getMonth() - 6);
+  return d.toISOString().slice(0, 10);
+}
+
+function filterByPeriod(observations, period) {
+  if (period === 'all' || observations.length === 0) return observations;
+  const cutoff = cutoffDate(period, observations[observations.length - 1].date);
+  return observations.filter(o => o.date >= cutoff);
+}
+
+function renderPeriodBar() {
+  const bar = document.getElementById('period-bar');
+  bar.innerHTML = PERIODS.map(p =>
+    `<button class="period-btn ${p.key === currentPeriod ? 'active' : ''}" data-period="${p.key}">${p.label}</button>`
+  ).join('');
+  bar.querySelectorAll('.period-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      currentPeriod = btn.dataset.period;
+      renderCurrentView();
+    });
+  });
+}
+
+// ---------- 이벤트 주석 ----------
 function eventsInRange(minDate, maxDate) {
   return allEvents.filter(e => e.date >= minDate && e.date <= maxDate);
 }
@@ -365,9 +510,7 @@ function buildAnnotations(minDate, maxDate) {
       borderColor: 'rgba(255, 138, 92, 0.65)',
       borderWidth: 1,
       borderDash: [4, 3],
-      label: {
-        display: false,
-      },
+      label: { display: false },
       click: () => showEventDetail(e),
       enter: (ctx) => { ctx.element.options.borderColor = '#ff8a5c'; ctx.chart.draw(); },
       leave: (ctx) => { ctx.element.options.borderColor = 'rgba(255, 138, 92, 0.65)'; ctx.chart.draw(); },
@@ -393,43 +536,72 @@ function renderStatsBox(ind) {
   const yoyText = yoy === null || yoy === undefined ? '데이터 부족' : `${yoy > 0 ? '+' : ''}${yoy}%`;
   wrap.innerHTML = `
     <div class="stats-grid">
-      <div class="stat-tile">
-        <div class="label">최신값 (${s.latest_date})</div>
-        <div class="value">${fmt(s.latest_value)}</div>
-      </div>
-      <div class="stat-tile">
-        <div class="label">전년 동기 대비</div>
-        <div class="value ${yoyClass}">${yoyText}</div>
-      </div>
-      <div class="stat-tile">
-        <div class="label">역대 최고 (${s.max_date})</div>
-        <div class="value">${fmt(s.max_value)}</div>
-      </div>
-      <div class="stat-tile">
-        <div class="label">역대 최저 (${s.min_date})</div>
-        <div class="value">${fmt(s.min_value)}</div>
-      </div>
+      <div class="stat-tile"><div class="label">최신값 (${s.latest_date})</div><div class="value">${fmt(s.latest_value)}</div></div>
+      <div class="stat-tile"><div class="label">전년 동기 대비</div><div class="value ${yoyClass}">${yoyText}</div></div>
+      <div class="stat-tile"><div class="label">역대 최고 (${s.max_date})</div><div class="value">${fmt(s.max_value)}</div></div>
+      <div class="stat-tile"><div class="label">역대 최저 (${s.min_date})</div><div class="value">${fmt(s.min_value)}</div></div>
     </div>`;
 }
 
-function selectIndicator(ind, btnEl) {
-  document.querySelectorAll('.indicator-btn').forEach(b => b.classList.remove('active'));
-  if (btnEl) btnEl.classList.add('active');
+function renderDescriptionBox(ind) {
+  const box = document.getElementById('description-box');
+  const d = descriptionFor(ind);
+  if (!d) { box.style.display = 'none'; box.innerHTML = ''; return; }
+  box.style.display = 'block';
+  box.innerHTML = `<div class="desc-title">${d.title}</div>`
+    + d.body.map(p => `<p>${p}</p>`).join('')
+    + (d.tip ? `<div class="desc-tip">💡 ${d.tip}</div>` : '');
+}
 
+// ---------- 뷰 상태 관리 ----------
+function selectIndicatorByCode(code) {
+  currentView = { type: 'single', code };
+  renderCurrentView();
+}
+
+function setCompareView(category, mode) {
+  if (compareSelections[category].size < 2) return;
+  currentView = { type: 'compare', category, mode };
+  renderCurrentView();
+}
+
+function renderCurrentView() {
+  if (!currentView) return;
+  if (currentView.type === 'single') {
+    const ind = allIndicators.find(i => i.code === currentView.code);
+    if (ind) renderSingleView(ind);
+  } else if (currentView.type === 'compare') {
+    renderCompareView(currentView.category, currentView.mode);
+  }
+  updateSidebarActiveState();
+}
+
+function renderSingleView(ind) {
   document.getElementById('chart-title').textContent = ind.name;
-  document.getElementById('chart-meta').textContent =
-    `${ind.unit || ''} · 출처: ${ind.source} · ${ind.region || ''}`;
+  const sourceLink = ind.source_url
+    ? ` · <a href="${ind.source_url}" target="_blank" rel="noopener">출처 보기 ↗</a>` : '';
+  document.getElementById('chart-meta').innerHTML =
+    `${ind.unit || ''} · 출처: ${ind.source}${ind.region ? ' · ' + ind.region : ''}${sourceLink}`;
   document.getElementById('event-detail').classList.remove('show');
 
+  renderDescriptionBox(ind);
+  renderPeriodBar();
+
+  const filtered = filterByPeriod(ind.observations, currentPeriod);
   const wrap = document.getElementById('chart-wrap');
   wrap.innerHTML = '<canvas id="chart-canvas"></canvas>';
   if (chartInstance) chartInstance.destroy();
 
-  const points = ind.observations.map(o => ({ x: o.date, y: o.value }));
-  const minDate = ind.observations[0]?.date;
-  const maxDate = ind.observations[ind.observations.length - 1]?.date;
-  const { annotations, count } = buildAnnotations(minDate, maxDate);
+  if (filtered.length === 0) {
+    wrap.innerHTML = '<div class="empty">선택한 기간에는 데이터가 없습니다.</div>';
+    document.getElementById('event-hint').textContent = '';
+    renderStatsBox(ind);
+    return;
+  }
 
+  const points = filtered.map(o => ({ x: o.date, y: o.value }));
+  const minDate = filtered[0].date, maxDate = filtered[filtered.length - 1].date;
+  const { annotations, count } = buildAnnotations(minDate, maxDate);
   document.getElementById('event-hint').textContent =
     count > 0 ? `차트의 점선이 주요 국제 이벤트입니다. 클릭하면 설명이 표시됩니다. (${count}건)` : '';
 
@@ -456,28 +628,37 @@ function selectIndicator(ind, btnEl) {
         x: { type: 'time', time: { tooltipFormat: 'yyyy-MM-dd' }, ticks: { color: '#93a3bd', maxTicksLimit: 10 }, grid: { color: '#223049' } },
         y: { ticks: { color: '#93a3bd' }, grid: { color: '#223049' } },
       },
-      plugins: {
-        legend: { display: false },
-        annotation: { annotations },
-      },
+      plugins: { legend: { display: false }, annotation: { annotations } },
     },
   });
 
   renderStatsBox(ind);
 }
 
-function renderComparisonChart() {
-  const selected = allIndicators.filter(i => compareSelection.has(i.code));
+function renderCompareView(category, mode) {
+  const selected = allIndicators.filter(i => compareSelections[category].has(i.code));
   if (selected.length < 2) return;
 
-  document.querySelectorAll('.indicator-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('event-detail').classList.remove('show');
+  document.getElementById('description-box').style.display = 'none';
+  document.getElementById('stats-wrap').innerHTML = '';
+  renderPeriodBar();
 
-  // 공통 구간(교집합) 계산
+  if (category === 'freight_index') renderFreightCompare(selected);
+  else if (category === 'cargo_volume' && mode === 'stacked-bar') renderCargoStackedBar(selected);
+  else if (category === 'cargo_volume') renderCargoLine(selected);
+}
+
+function renderFreightCompare(selected) {
   const starts = selected.map(i => i.observations[0]?.date).filter(Boolean);
   const ends = selected.map(i => i.observations[i.observations.length - 1]?.date).filter(Boolean);
-  const commonStart = starts.reduce((a, b) => (a > b ? a : b));
-  const commonEnd = ends.reduce((a, b) => (a < b ? a : b));
+  let commonStart = starts.reduce((a, b) => (a > b ? a : b));
+  let commonEnd = ends.reduce((a, b) => (a < b ? a : b));
+
+  if (currentPeriod !== 'all' && commonStart <= commonEnd) {
+    const cutoff = cutoffDate(currentPeriod, commonEnd);
+    if (cutoff > commonStart) commonStart = cutoff;
+  }
 
   document.getElementById('chart-title').textContent = `비교: ${selected.map(i => i.name).join(' · ')}`;
   document.getElementById('chart-meta').textContent =
@@ -488,7 +669,6 @@ function renderComparisonChart() {
   const wrap = document.getElementById('chart-wrap');
   wrap.innerHTML = '<canvas id="chart-canvas"></canvas>';
   if (chartInstance) chartInstance.destroy();
-  document.getElementById('stats-wrap').innerHTML = '';
 
   if (commonStart > commonEnd) {
     wrap.innerHTML = '<div class="empty">선택한 지표들은 겹치는 기간이 없어 비교할 수 없습니다.</div>';
@@ -501,16 +681,7 @@ function renderComparisonChart() {
     const base = inRange[0]?.value;
     const data = inRange.map(o => ({ x: o.date, y: base ? (o.value / base) * 100 : null }));
     const color = COMPARE_COLORS[i % COMPARE_COLORS.length];
-    return {
-      label: ind.name,
-      data,
-      borderColor: color,
-      backgroundColor: color,
-      fill: false,
-      tension: 0.15,
-      pointRadius: 0,
-      borderWidth: 2,
-    };
+    return { label: ind.name, data, borderColor: color, backgroundColor: color, fill: false, tension: 0.15, pointRadius: 0, borderWidth: 2 };
   });
 
   const { annotations, count } = buildAnnotations(commonStart, commonEnd);
@@ -537,6 +708,98 @@ function renderComparisonChart() {
   });
 }
 
+function renderCargoLine(selected) {
+  document.getElementById('chart-title').textContent = `물동량 비교(선 그래프): ${selected.map(i => i.name).join(' · ')}`;
+  document.getElementById('chart-meta').textContent = '단위: TEU · 원자료 그대로 비교 (정규화 없음)';
+
+  const wrap = document.getElementById('chart-wrap');
+  wrap.innerHTML = '<canvas id="chart-canvas"></canvas>';
+  if (chartInstance) chartInstance.destroy();
+
+  let minDate = null, maxDate = null;
+  const datasets = selected.map((ind, i) => {
+    const filtered = filterByPeriod(ind.observations, currentPeriod);
+    if (filtered.length) {
+      if (!minDate || filtered[0].date < minDate) minDate = filtered[0].date;
+      if (!maxDate || filtered[filtered.length - 1].date > maxDate) maxDate = filtered[filtered.length - 1].date;
+    }
+    const color = COMPARE_COLORS[i % COMPARE_COLORS.length];
+    return {
+      label: ind.name,
+      data: filtered.map(o => ({ x: o.date, y: o.value })),
+      borderColor: color, backgroundColor: color,
+      fill: false, tension: 0.15, pointRadius: 2, borderWidth: 2,
+    };
+  });
+
+  const { annotations, count } = minDate ? buildAnnotations(minDate, maxDate) : { annotations: {}, count: 0 };
+  document.getElementById('event-hint').textContent =
+    count > 0 ? `차트의 점선이 주요 국제 이벤트입니다. 클릭하면 설명이 표시됩니다. (${count}건)` : '';
+
+  const ctx = document.getElementById('chart-canvas').getContext('2d');
+  chartInstance = new Chart(ctx, {
+    type: 'line',
+    data: { datasets },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      interaction: { mode: 'nearest', intersect: false },
+      scales: {
+        x: { type: 'time', time: { tooltipFormat: 'yyyy-MM-dd' }, ticks: { color: '#93a3bd', maxTicksLimit: 10 }, grid: { color: '#223049' } },
+        y: { ticks: { color: '#93a3bd' }, grid: { color: '#223049' }, title: { display: true, text: 'TEU', color: '#93a3bd' } },
+      },
+      plugins: {
+        legend: { display: true, labels: { color: '#e7edf7', boxWidth: 12, font: { size: 11 } } },
+        annotation: { annotations },
+      },
+    },
+  });
+}
+
+function renderCargoStackedBar(selected) {
+  document.getElementById('chart-title').textContent = `물동량 비교(누적 막대): ${selected.map(i => i.name).join(' · ')}`;
+  document.getElementById('chart-meta').textContent = '단위: TEU · 연도별 누적 막대그래프';
+  document.getElementById('event-hint').textContent = '';
+
+  const wrap = document.getElementById('chart-wrap');
+  wrap.innerHTML = '<canvas id="chart-canvas"></canvas>';
+  if (chartInstance) chartInstance.destroy();
+
+  const perSeries = selected.map(ind => filterByPeriod(ind.observations, currentPeriod));
+  const yearSet = new Set();
+  perSeries.forEach(obs => obs.forEach(o => yearSet.add(o.date.slice(0, 4))));
+  const years = [...yearSet].sort();
+
+  if (years.length === 0) {
+    wrap.innerHTML = '<div class="empty">선택한 기간에는 데이터가 없습니다.</div>';
+    return;
+  }
+
+  const datasets = selected.map((ind, i) => {
+    const obsByYear = Object.fromEntries(perSeries[i].map(o => [o.date.slice(0, 4), o.value]));
+    return {
+      label: ind.name,
+      data: years.map(y => obsByYear[y] ?? null),
+      backgroundColor: COMPARE_COLORS[i % COMPARE_COLORS.length],
+    };
+  });
+
+  const ctx = document.getElementById('chart-canvas').getContext('2d');
+  chartInstance = new Chart(ctx, {
+    type: 'bar',
+    data: { labels: years, datasets },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        x: { stacked: true, ticks: { color: '#93a3bd' }, grid: { color: '#223049' } },
+        y: { stacked: true, ticks: { color: '#93a3bd' }, grid: { color: '#223049' }, title: { display: true, text: 'TEU', color: '#93a3bd' } },
+      },
+      plugins: { legend: { display: true, labels: { color: '#e7edf7', boxWidth: 12, font: { size: 11 } } } },
+    },
+  });
+}
+
 function renderCommentary() {
   const byCode = Object.fromEntries(allIndicators.map(i => [i.code, i]));
   const bdi = byCode['BDI'], scfi = byCode['SCFI'], ccfi = byCode['CCFI'];
@@ -555,10 +818,8 @@ function renderCommentary() {
       + `역대 최저치(${s.min_date}, ${fmt(s.min_value)}) 대비로는 ${Math.round((s.latest_value / s.min_value) * 100)}% 수준입니다.</li>`;
   }
 
-  const bdiLine = line(bdi, 'BDI(벌크선 운임)');
-  const scfiLine = line(scfi, 'SCFI(상하이발 컨테이너 운임)');
-  const ccfiLine = line(ccfi, 'CCFI(중국발 컨테이너 운임)');
-  [bdiLine, scfiLine, ccfiLine].forEach(l => { if (l) items.push(l); });
+  [line(bdi, 'BDI(벌크선 운임)'), line(scfi, 'SCFI(상하이발 컨테이너 운임)'), line(ccfi, 'CCFI(중국발 컨테이너 운임)')]
+    .forEach(l => { if (l) items.push(l); });
 
   if (scfi?.stats && scfi.stats.yoy_change_pct > 50) {
     items.push(`<li>SCFI가 1년 새 <span class="num">${scfi.stats.yoy_change_pct}%</span>나 오른 건 정상 범위를 벗어난 변동입니다. `
@@ -573,8 +834,8 @@ function renderCommentary() {
         + '벌크 화물(원자재·곡물 등)보다 컨테이너 화물(소비재) 쪽 운임 압박이 더 크다는 뜻으로 읽을 수 있습니다.</li>');
     }
   }
-  items.push('<li>좌측 "운임 지수" 카테고리에서 체크박스로 여러 지수를 선택하면, 겹치는 기간을 기준으로 정규화한 비교 차트를 볼 수 있습니다. '
-    + '점선으로 표시된 국제 이벤트를 클릭하면 해당 시점에 어떤 일이 있었는지 확인할 수 있습니다.</li>');
+  items.push('<li>좌측 카테고리에서 체크박스로 여러 지표를 선택하면 비교 차트를 볼 수 있습니다 (운임 지수는 정규화 비교, 물동량은 선 그래프/누적 막대 중 선택). '
+    + '점선으로 표시된 국제 이벤트를 클릭하면 해당 시점에 어떤 일이 있었는지 확인할 수 있고, 차트 위 기간 버튼으로 조회 범위를 좁힐 수 있습니다.</li>');
 
   list.innerHTML = items.length ? items.join('') : '<li>표시할 데이터가 아직 없습니다.</li>';
 }

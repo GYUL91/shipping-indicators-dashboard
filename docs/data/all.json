@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-02T22:58:04.057265+00:00",
+  "generated_at": "2026-09-02T23:44:44.162614+00:00",
   "indicators": [
     {
       "code": "WB_PORT_TRAFFIC_CHN",
@@ -8,6 +8,7 @@
       "unit": "TEU",
       "source": "worldbank",
       "region": "CHN",
+      "source_url": "https://data.worldbank.org/indicator/IS.SHP.GOOD.TU",
       "stats": {
         "latest_date": "2024-01-01",
         "latest_value": 299703800.0,
@@ -87,6 +88,7 @@
       "unit": "TEU",
       "source": "worldbank",
       "region": "KOR",
+      "source_url": "https://data.worldbank.org/indicator/IS.SHP.GOOD.TU",
       "stats": {
         "latest_date": "2024-01-01",
         "latest_value": 31850924.0,
@@ -166,6 +168,7 @@
       "unit": "TEU",
       "source": "worldbank",
       "region": "NLD",
+      "source_url": "https://data.worldbank.org/indicator/IS.SHP.GOOD.TU",
       "stats": {
         "latest_date": "2024-01-01",
         "latest_value": 14517179.0,
@@ -245,6 +248,7 @@
       "unit": "TEU",
       "source": "worldbank",
       "region": "SGP",
+      "source_url": "https://data.worldbank.org/indicator/IS.SHP.GOOD.TU",
       "stats": {
         "latest_date": "2024-01-01",
         "latest_value": 41124100.0,
@@ -324,6 +328,7 @@
       "unit": "TEU",
       "source": "worldbank",
       "region": "USA",
+      "source_url": "https://data.worldbank.org/indicator/IS.SHP.GOOD.TU",
       "stats": {
         "latest_date": "2024-01-01",
         "latest_value": 59707490.0,
@@ -403,6 +408,7 @@
       "unit": "TEU",
       "source": "worldbank",
       "region": "WLD",
+      "source_url": "https://data.worldbank.org/indicator/IS.SHP.GOOD.TU",
       "stats": {
         "latest_date": "2024-01-01",
         "latest_value": 913279048.0,
@@ -482,6 +488,7 @@
       "unit": "million DWT",
       "source": "manual",
       "region": "Global",
+      "source_url": "https://unctad.org/topic/transport-and-trade-logistics/review-of-maritime-transport",
       "stats": {
         "latest_date": "2025-01-01",
         "latest_value": 2200.0,
@@ -505,6 +512,7 @@
       "unit": "index",
       "source": "nlic",
       "region": "Global",
+      "source_url": "https://www.nlic.go.kr/nlic/transInPortCt.action",
       "stats": {
         "latest_date": "2026-08-28",
         "latest_value": 3186.0,
@@ -12728,6 +12736,7 @@
       "unit": "index",
       "source": "nlic",
       "region": "Global",
+      "source_url": "https://www.nlic.go.kr/nlic/transInPortCt.action",
       "stats": {
         "latest_date": "2026-08-28",
         "latest_value": 1833.99,
@@ -15223,6 +15232,7 @@
       "unit": "천원/2TEU",
       "source": "nlic",
       "region": "EU",
+      "source_url": "https://www.nlic.go.kr/nlic/seaDmstcOcn.action",
       "stats": {
         "latest_date": "2026-07-01",
         "latest_value": 1295.0,
@@ -15606,6 +15616,7 @@
       "unit": "천원/2TEU",
       "source": "nlic",
       "region": "미국 동부",
+      "source_url": "https://www.nlic.go.kr/nlic/seaDmstcOcn.action",
       "stats": {
         "latest_date": "2026-07-01",
         "latest_value": 1731.0,
@@ -15989,6 +16000,7 @@
       "unit": "천원/2TEU",
       "source": "nlic",
       "region": "미국 서부",
+      "source_url": "https://www.nlic.go.kr/nlic/seaDmstcOcn.action",
       "stats": {
         "latest_date": "2026-07-01",
         "latest_value": 2533.0,
@@ -16372,6 +16384,7 @@
       "unit": "천원/2TEU",
       "source": "nlic",
       "region": "베트남",
+      "source_url": "https://www.nlic.go.kr/nlic/seaDmstcOcn.action",
       "stats": {
         "latest_date": "2026-07-01",
         "latest_value": 1325.0,
@@ -16755,6 +16768,7 @@
       "unit": "천원/2TEU",
       "source": "nlic",
       "region": "일본",
+      "source_url": "https://www.nlic.go.kr/nlic/seaDmstcOcn.action",
       "stats": {
         "latest_date": "2026-07-01",
         "latest_value": 1139.0,
@@ -17138,6 +17152,7 @@
       "unit": "천원/2TEU",
       "source": "nlic",
       "region": "중국",
+      "source_url": "https://www.nlic.go.kr/nlic/seaDmstcOcn.action",
       "stats": {
         "latest_date": "2026-07-01",
         "latest_value": 1583.0,
@@ -17521,6 +17536,7 @@
       "unit": "천원/2TEU",
       "source": "nlic",
       "region": "EU",
+      "source_url": "https://www.nlic.go.kr/nlic/seaDmstcOcn.action",
       "stats": {
         "latest_date": "2026-07-01",
         "latest_value": 5680.0,
@@ -17904,6 +17920,7 @@
       "unit": "천원/2TEU",
       "source": "nlic",
       "region": "미국 동부",
+      "source_url": "https://www.nlic.go.kr/nlic/seaDmstcOcn.action",
       "stats": {
         "latest_date": "2026-07-01",
         "latest_value": 8143.0,
@@ -18287,6 +18304,7 @@
       "unit": "천원/2TEU",
       "source": "nlic",
       "region": "미국 서부",
+      "source_url": "https://www.nlic.go.kr/nlic/seaDmstcOcn.action",
       "stats": {
         "latest_date": "2026-07-01",
         "latest_value": 8559.0,
@@ -18670,6 +18688,7 @@
       "unit": "천원/2TEU",
       "source": "nlic",
       "region": "베트남",
+      "source_url": "https://www.nlic.go.kr/nlic/seaDmstcOcn.action",
       "stats": {
         "latest_date": "2026-07-01",
         "latest_value": 1762.0,
@@ -19053,6 +19072,7 @@
       "unit": "천원/2TEU",
       "source": "nlic",
       "region": "일본",
+      "source_url": "https://www.nlic.go.kr/nlic/seaDmstcOcn.action",
       "stats": {
         "latest_date": "2026-07-01",
         "latest_value": 694.0,
@@ -19436,6 +19456,7 @@
       "unit": "천원/2TEU",
       "source": "nlic",
       "region": "중국",
+      "source_url": "https://www.nlic.go.kr/nlic/seaDmstcOcn.action",
       "stats": {
         "latest_date": "2026-07-01",
         "latest_value": 859.0,
@@ -19819,6 +19840,7 @@
       "unit": "index",
       "source": "nlic",
       "region": "Global",
+      "source_url": "https://www.nlic.go.kr/nlic/transInPortCt.action",
       "stats": {
         "latest_date": "2026-08-28",
         "latest_value": 3509.53,
