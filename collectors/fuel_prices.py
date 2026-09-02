@@ -41,19 +41,29 @@ DIESEL_SERIES = {
 }
 
 
-def _fetch_series(api_key, path, series_id, length=500):
+def _fetch_series(api_key, path, series_id, page_size=5000, max_pages=20):
+    """EIA API v2는 한 번에 최대 5000행만 반환하므로 offset을 이동하며 전체 이력을
+    끝까지(가장 오래된 데이터까지) 페이지네이션으로 수집한다."""
     url = f"{EIA_BASE}/{path}/data/"
-    params = {
-        "api_key": api_key,
-        "facets[series][]": series_id,
-        "sort[0][column]": "period",
-        "sort[0][direction]": "desc",
-        "length": length,
-    }
-    resp = requests.get(url, params=params, timeout=30)
-    resp.raise_for_status()
-    rows = resp.json()["response"]["data"]
-    return [(row["period"], row["value"]) for row in rows if row.get("value") is not None]
+    all_rows = []
+    for page in range(max_pages):
+        params = {
+            "api_key": api_key,
+            "facets[series][]": series_id,
+            "sort[0][column]": "period",
+            "sort[0][direction]": "desc",
+            "offset": page * page_size,
+            "length": page_size,
+        }
+        resp = requests.get(url, params=params, timeout=30)
+        resp.raise_for_status()
+        rows = resp.json()["response"]["data"]
+        if not rows:
+            break
+        all_rows.extend(rows)
+        if len(rows) < page_size:
+            break
+    return [(row["period"], row["value"]) for row in all_rows if row.get("value") is not None]
 
 
 def collect():

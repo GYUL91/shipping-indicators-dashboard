@@ -50,8 +50,20 @@ python export/export_json.py
 
 ## 대시보드
 
-`docs/index.html`이 `docs/data/all.json`을 fetch해 Chart.js로 시각화하는 정적 페이지입니다.
-GitHub Pages에서 `docs/` 폴더를 배포 루트로 지정하면 바로 서비스됩니다.
+`docs/index.html`이 `docs/data/all.json`(지표+통계)과 `docs/data/events.json`(국제 이벤트)을
+fetch해 Chart.js로 시각화하는 정적 페이지입니다. GitHub Pages에서 `docs/` 폴더를 배포 루트로
+지정하면 바로 서비스됩니다. 배포 주소: https://gyul91.github.io/shipping-indicators-dashboard/
+
+기능:
+- **조회기간 최대화**: 각 소스가 실제로 제공하는 만큼 전체 이력을 수집 (SCFI/CCFI/BDI는 소스 자체가
+  2014년부터만 제공, 국내 항로별 지수는 여러 번 요청을 이어붙여 실제 시작월인 2019-01까지 확보,
+  EIA 유가는 페이지네이션으로 전체 이력 수집)
+- **이벤트 주석**: 리먼사태·수에즈 봉쇄·홍해 사태 등 주요 국제 이벤트를 `docs/data/events.json`에
+  큐레이션해 차트에 점선으로 표시, 클릭하면 설명 표시 (직접 항목 추가/수정 가능)
+- **운임지수 비교 모드**: 좌측 체크박스로 여러 운임지수를 선택하면 공통 구간을 기준으로
+  시작값=100 정규화한 비교 차트 렌더링
+- **자동 인사이트**: `export/export_json.py`가 지표별 최신값/역대 최고·최저/전년동기대비 변화율을
+  계산해 JSON에 포함, 대시보드 상단 "데이터로 보는 인사이트" 패널이 이를 바탕으로 해설 문장을 생성
 
 ## 자동화
 

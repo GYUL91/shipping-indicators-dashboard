@@ -61,15 +61,16 @@ def _fetch_international(series_code):
     return dates, values
 
 
-def _fetch_domestic(direction):
-    """direction: 'XPT'(수출) or 'IMP'(수입). 반환: {route: [(date, value), ...]}"""
+def _fetch_domestic_window(direction, year, month):
+    """한 번 요청하면 (year, month)를 끝점으로 최대 36개월치 창을 돌려준다.
+    반환: {route: [(date, value), ...]}"""
     resp = requests.post(
         f"{BASE}/seaDmstcOcn.action",
         data={
             "command": "LIST",
             "S_IMXPRT_SE": direction,
-            "S_YEAR": str(CURRENT_YEAR),
-            "S_MONTH": "01",
+            "S_YEAR": str(year),
+            "S_MONTH": f"{month:02d}",
         },
         timeout=30,
     )
@@ -78,15 +79,39 @@ def _fetch_domestic(direction):
     text = resp.text
 
     by_route = {route: [] for route in DOMESTIC_ROUTES}
-    for month, span_block in DOMESTIC_BLOCK_RE.findall(text):
+    for ym, span_block in DOMESTIC_BLOCK_RE.findall(text):
         values = SPAN_RE.findall(span_block)
         if len(values) != len(DOMESTIC_ROUTES):
             continue
         for route, raw in zip(DOMESTIC_ROUTES, values):
             v = _to_float(raw)
             if v is not None:
-                by_route[route].append((f"{month}-01", v))
+                by_route[route].append((f"{ym}-01", v))
     return by_route
+
+
+def _fetch_domestic(direction):
+    """사이트가 한 번 요청에 최대 36개월 창만 돌려주므로, 끝점을 30개월씩 당겨가며
+    여러 번 요청해 실제 데이터 시작월(2019-01 부근)까지 이어붙인다.
+    반환: {route: [(date, value), ...]}  (날짜 오름차순, 중복 제거)"""
+    merged = {route: {} for route in DOMESTIC_ROUTES}
+
+    year, month = CURRENT_YEAR, date.today().month
+    for _ in range(6):  # 30개월 간격 x 6회 ≈ 15년까지 커버 (실제 데이터는 2019-01부터)
+        window = _fetch_domestic_window(direction, year, month)
+        added = 0
+        for route, pairs in window.items():
+            for d, v in pairs:
+                if d not in merged[route]:
+                    merged[route][d] = v
+                    added += 1
+        if added == 0:
+            break
+        # 다음 창의 끝점을 30개월 전으로 이동
+        total_months = year * 12 + (month - 1) - 30
+        year, month = total_months // 12, total_months % 12 + 1
+
+    return {route: sorted(vals.items()) for route, vals in merged.items()}
 
 
 def collect():
