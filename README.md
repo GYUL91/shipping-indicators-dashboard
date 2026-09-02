@@ -7,12 +7,15 @@ SQLite DB에 저장하고, GitHub Pages 정적 대시보드로 시각화하는 �
 
 | 카테고리 | 지표 예시 | 출처 | 수집 방식 |
 |---|---|---|---|
+| 운임 지수 | BDI, SCFI, CCFI, 국내 해상운임지수(수출입 x 6개 항로) | 국가물류통합정보센터(NLIC, 국토교통부) | 자동 (API 키 불필요) |
 | 유가/연료비 | Brent/WTI 유가, 미국 디젤 소매가 | EIA (미국 에너지정보청) | 자동 (API 키 필요) |
 | 물동량/처리량 | 컨테이너 항만 처리량(TEU) | World Bank | 자동 (API 키 불필요) |
-| 운임 지수 | BDI, SCFI, CCFI | Baltic Exchange / 상하이해운거래소 | **수동 CSV 입력** (유료 구독 전용, 무료 API 없음) |
 | 선박/선대 | 세계 상선대 규모 | UNCTAD | **수동 CSV 입력** (연 1회 발표) |
 
-BDI/SCFI/CCFI 등은 공식 무료 API가 없어 `manual_data/*.csv`에 값을 직접 채워넣는 방식으로 반영합니다.
+운임 지수는 [nlic.go.kr](https://www.nlic.go.kr/nlic/transInPortCt.action)(국외: SCFI/CCFI/BDI, 한국관세물류협회 자료)와
+[seaDmstcOcn.action](https://www.nlic.go.kr/nlic/seaDmstcOcn.action)(국내: 관세청 수출입무역통계 기반)의 검색 폼을
+그대로 HTTP POST로 호출해 자동 수집합니다(`collectors/freight_indices.py`).
+선대 통계처럼 정말 무료 소스가 없는 지표만 `manual_data/*.csv`에 직접 채워넣는 방식으로 반영합니다.
 
 ## 설치
 
