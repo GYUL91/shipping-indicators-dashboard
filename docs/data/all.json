@@ -1,0 +1,485 @@
+{
+  "generated_at": "2026-09-02T06:47:13.138262+00:00",
+  "indicators": [
+    {
+      "code": "WB_PORT_TRAFFIC_CHN",
+      "name": "Container Port Traffic - China",
+      "category": "cargo_volume",
+      "unit": "TEU",
+      "source": "worldbank",
+      "region": "CHN",
+      "observations": [
+        {
+          "date": "2010-01-01",
+          "value": 136044183.0
+        },
+        {
+          "date": "2011-01-01",
+          "value": 151800937.0
+        },
+        {
+          "date": "2012-01-01",
+          "value": 165939400.0
+        },
+        {
+          "date": "2013-01-01",
+          "value": 176607144.0
+        },
+        {
+          "date": "2014-01-01",
+          "value": 187291913.0
+        },
+        {
+          "date": "2015-01-01",
+          "value": 195509165.0
+        },
+        {
+          "date": "2016-01-01",
+          "value": 202830580.0
+        },
+        {
+          "date": "2017-01-01",
+          "value": 218712874.0
+        },
+        {
+          "date": "2018-01-01",
+          "value": 229127700.0
+        },
+        {
+          "date": "2019-01-01",
+          "value": 237570000.0
+        },
+        {
+          "date": "2020-01-01",
+          "value": 240480000.0
+        },
+        {
+          "date": "2021-01-01",
+          "value": 256945700.0
+        },
+        {
+          "date": "2022-01-01",
+          "value": 268790000.0
+        },
+        {
+          "date": "2023-01-01",
+          "value": 278759834.0
+        },
+        {
+          "date": "2024-01-01",
+          "value": 299703800.0
+        }
+      ]
+    },
+    {
+      "code": "WB_PORT_TRAFFIC_KOR",
+      "name": "Container Port Traffic - Korea, Rep.",
+      "category": "cargo_volume",
+      "unit": "TEU",
+      "source": "worldbank",
+      "region": "KOR",
+      "observations": [
+        {
+          "date": "2010-01-01",
+          "value": 19202172.0
+        },
+        {
+          "date": "2011-01-01",
+          "value": 21610491.0
+        },
+        {
+          "date": "2012-01-01",
+          "value": 22559272.0
+        },
+        {
+          "date": "2013-01-01",
+          "value": 23463109.0
+        },
+        {
+          "date": "2014-01-01",
+          "value": 24798794.0
+        },
+        {
+          "date": "2015-01-01",
+          "value": 25477299.0
+        },
+        {
+          "date": "2016-01-01",
+          "value": 25945418.0
+        },
+        {
+          "date": "2017-01-01",
+          "value": 27420698.0
+        },
+        {
+          "date": "2018-01-01",
+          "value": 28874930.0
+        },
+        {
+          "date": "2019-01-01",
+          "value": 28959959.0
+        },
+        {
+          "date": "2020-01-01",
+          "value": 28834192.0
+        },
+        {
+          "date": "2021-01-01",
+          "value": 29786900.0
+        },
+        {
+          "date": "2022-01-01",
+          "value": 28502044.0
+        },
+        {
+          "date": "2023-01-01",
+          "value": 30003141.0
+        },
+        {
+          "date": "2024-01-01",
+          "value": 31850924.0
+        }
+      ]
+    },
+    {
+      "code": "WB_PORT_TRAFFIC_NLD",
+      "name": "Container Port Traffic - Netherlands",
+      "category": "cargo_volume",
+      "unit": "TEU",
+      "source": "worldbank",
+      "region": "NLD",
+      "observations": [
+        {
+          "date": "2010-01-01",
+          "value": 11334566.0
+        },
+        {
+          "date": "2011-01-01",
+          "value": 12024928.0
+        },
+        {
+          "date": "2012-01-01",
+          "value": 12034495.0
+        },
+        {
+          "date": "2013-01-01",
+          "value": 11751977.0
+        },
+        {
+          "date": "2014-01-01",
+          "value": 12456588.0
+        },
+        {
+          "date": "2015-01-01",
+          "value": 12400607.0
+        },
+        {
+          "date": "2016-01-01",
+          "value": 12612142.0
+        },
+        {
+          "date": "2017-01-01",
+          "value": 13992474.0
+        },
+        {
+          "date": "2018-01-01",
+          "value": 14802257.0
+        },
+        {
+          "date": "2019-01-01",
+          "value": 15198050.0
+        },
+        {
+          "date": "2020-01-01",
+          "value": 14757227.0
+        },
+        {
+          "date": "2021-01-01",
+          "value": 15781756.0
+        },
+        {
+          "date": "2022-01-01",
+          "value": 14929333.0
+        },
+        {
+          "date": "2023-01-01",
+          "value": 14111298.0
+        },
+        {
+          "date": "2024-01-01",
+          "value": 14517179.0
+        }
+      ]
+    },
+    {
+      "code": "WB_PORT_TRAFFIC_SGP",
+      "name": "Container Port Traffic - Singapore",
+      "category": "cargo_volume",
+      "unit": "TEU",
+      "source": "worldbank",
+      "region": "SGP",
+      "observations": [
+        {
+          "date": "2010-01-01",
+          "value": 28431100.0
+        },
+        {
+          "date": "2011-01-01",
+          "value": 29937700.0
+        },
+        {
+          "date": "2012-01-01",
+          "value": 31649400.0
+        },
+        {
+          "date": "2013-01-01",
+          "value": 32578700.0
+        },
+        {
+          "date": "2014-01-01",
+          "value": 33869300.0
+        },
+        {
+          "date": "2015-01-01",
+          "value": 30922300.0
+        },
+        {
+          "date": "2016-01-01",
+          "value": 30903600.0
+        },
+        {
+          "date": "2017-01-01",
+          "value": 33666600.0
+        },
+        {
+          "date": "2018-01-01",
+          "value": 36599200.0
+        },
+        {
+          "date": "2019-01-01",
+          "value": 37195000.0
+        },
+        {
+          "date": "2020-01-01",
+          "value": 36870900.0
+        },
+        {
+          "date": "2021-01-01",
+          "value": 37571200.0
+        },
+        {
+          "date": "2022-01-01",
+          "value": 37289600.0
+        },
+        {
+          "date": "2023-01-01",
+          "value": 39010000.0
+        },
+        {
+          "date": "2024-01-01",
+          "value": 41124100.0
+        }
+      ]
+    },
+    {
+      "code": "WB_PORT_TRAFFIC_USA",
+      "name": "Container Port Traffic - United States",
+      "category": "cargo_volume",
+      "unit": "TEU",
+      "source": "worldbank",
+      "region": "USA",
+      "observations": [
+        {
+          "date": "2010-01-01",
+          "value": 40266221.0
+        },
+        {
+          "date": "2011-01-01",
+          "value": 40813311.0
+        },
+        {
+          "date": "2012-01-01",
+          "value": 41880574.0
+        },
+        {
+          "date": "2013-01-01",
+          "value": 42842995.0
+        },
+        {
+          "date": "2014-01-01",
+          "value": 44635035.0
+        },
+        {
+          "date": "2015-01-01",
+          "value": 46496985.0
+        },
+        {
+          "date": "2016-01-01",
+          "value": 46940227.0
+        },
+        {
+          "date": "2017-01-01",
+          "value": 50196165.0
+        },
+        {
+          "date": "2018-01-01",
+          "value": 52994177.0
+        },
+        {
+          "date": "2019-01-01",
+          "value": 54236516.0
+        },
+        {
+          "date": "2020-01-01",
+          "value": 53059014.0
+        },
+        {
+          "date": "2021-01-01",
+          "value": 60874671.0
+        },
+        {
+          "date": "2022-01-01",
+          "value": 61191458.0
+        },
+        {
+          "date": "2023-01-01",
+          "value": 54618858.0
+        },
+        {
+          "date": "2024-01-01",
+          "value": 59707490.0
+        }
+      ]
+    },
+    {
+      "code": "WB_PORT_TRAFFIC_WLD",
+      "name": "Container Port Traffic - World",
+      "category": "cargo_volume",
+      "unit": "TEU",
+      "source": "worldbank",
+      "region": "WLD",
+      "observations": [
+        {
+          "date": "2010-01-01",
+          "value": 547127645.26
+        },
+        {
+          "date": "2011-01-01",
+          "value": 593376139.89
+        },
+        {
+          "date": "2012-01-01",
+          "value": 623441761.259
+        },
+        {
+          "date": "2013-01-01",
+          "value": 643970054.627
+        },
+        {
+          "date": "2014-01-01",
+          "value": 675126025.766
+        },
+        {
+          "date": "2015-01-01",
+          "value": 684527381.9602
+        },
+        {
+          "date": "2016-01-01",
+          "value": 700903754.3662
+        },
+        {
+          "date": "2017-01-01",
+          "value": 746691932.4302
+        },
+        {
+          "date": "2018-01-01",
+          "value": 784294634.3772
+        },
+        {
+          "date": "2019-01-01",
+          "value": 803124175.651
+        },
+        {
+          "date": "2020-01-01",
+          "value": 791062136.625
+        },
+        {
+          "date": "2021-01-01",
+          "value": 844570038.0
+        },
+        {
+          "date": "2022-01-01",
+          "value": 850416540.0
+        },
+        {
+          "date": "2023-01-01",
+          "value": 853611611.0
+        },
+        {
+          "date": "2024-01-01",
+          "value": 913279048.0
+        }
+      ]
+    },
+    {
+      "code": "UNCTAD_FLEET",
+      "name": "World Merchant Fleet Size",
+      "category": "fleet",
+      "unit": "million DWT",
+      "source": "manual",
+      "region": "Global",
+      "observations": [
+        {
+          "date": "2025-01-01",
+          "value": 2200.0
+        }
+      ]
+    },
+    {
+      "code": "BDI",
+      "name": "Baltic Dry Index",
+      "category": "freight_index",
+      "unit": "index",
+      "source": "manual",
+      "region": "Global",
+      "observations": [
+        {
+          "date": "2026-08-01",
+          "value": 1850.0
+        },
+        {
+          "date": "2026-08-08",
+          "value": 1892.0
+        }
+      ]
+    },
+    {
+      "code": "CCFI",
+      "name": "China Containerized Freight Index",
+      "category": "freight_index",
+      "unit": "index",
+      "source": "manual",
+      "region": "Global",
+      "observations": [
+        {
+          "date": "2026-08-01",
+          "value": 1102.3
+        }
+      ]
+    },
+    {
+      "code": "SCFI",
+      "name": "Shanghai Containerized Freight Index",
+      "category": "freight_index",
+      "unit": "index",
+      "source": "manual",
+      "region": "Global",
+      "observations": [
+        {
+          "date": "2026-08-01",
+          "value": 980.5
+        }
+      ]
+    }
+  ]
+}

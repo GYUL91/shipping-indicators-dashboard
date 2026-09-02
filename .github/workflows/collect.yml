@@ -1,0 +1,35 @@
+name: Collect shipping indicators
+
+on:
+  schedule:
+    - cron: "0 21 * * *"   # 매일 UTC 21:00 (KST 06:00)
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install -r requirements.txt
+
+      - name: Run collectors
+        working-directory: collectors
+        env:
+          EIA_API_KEY: ${{ secrets.EIA_API_KEY }}
+        run: python run_all.py
+
+      - name: Commit updated data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/shipping.db docs/data/all.json
+          git diff --cached --quiet || git commit -m "chore: 지표 자동 갱신 [skip ci]"
+          git push
