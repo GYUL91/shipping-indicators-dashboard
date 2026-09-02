@@ -1,4 +1,5 @@
 name: Collect shipping indicators
+run-name: 해운 지표 자동 수집
 
 on:
   schedule:
