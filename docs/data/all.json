@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-15T23:25:40.382910+00:00",
+  "generated_at": "2026-09-16T23:32:30.173545+00:00",
   "indicators": [
     {
       "code": "WB_PORT_TRAFFIC_CHN",
@@ -514,13 +514,13 @@
       "region": "Global",
       "source_url": "https://www.nlic.go.kr/nlic/transInPortCt.action",
       "stats": {
-        "latest_date": "2026-09-03",
-        "latest_value": 3488.0,
+        "latest_date": "2026-09-14",
+        "latest_value": 3445.0,
         "max_date": "2021-10-07",
         "max_value": 5650.0,
         "min_date": "2016-02-10",
         "min_value": 290.0,
-        "yoy_change_pct": 79.8
+        "yoy_change_pct": 62.0
       },
       "observations": [
         {
@@ -12738,6 +12738,34 @@
         {
           "date": "2026-09-03",
           "value": 3488.0
+        },
+        {
+          "date": "2026-09-04",
+          "value": 3628.0
+        },
+        {
+          "date": "2026-09-07",
+          "value": 3575.0
+        },
+        {
+          "date": "2026-09-08",
+          "value": 3584.0
+        },
+        {
+          "date": "2026-09-09",
+          "value": 3620.0
+        },
+        {
+          "date": "2026-09-10",
+          "value": 3521.0
+        },
+        {
+          "date": "2026-09-11",
+          "value": 3507.0
+        },
+        {
+          "date": "2026-09-14",
+          "value": 3445.0
         }
       ]
     },
@@ -12750,13 +12778,13 @@
       "region": "Global",
       "source_url": "https://www.nlic.go.kr/nlic/transInPortCt.action",
       "stats": {
-        "latest_date": "2026-08-28",
-        "latest_value": 1833.99,
+        "latest_date": "2026-09-11",
+        "latest_value": 1862.18,
         "max_date": "2022-02-11",
         "max_value": 3587.91,
         "min_date": "2016-04-29",
         "min_value": 632.36,
-        "yoy_change_pct": 56.1
+        "yoy_change_pct": 62.0
       },
       "observations": [
         {
@@ -15234,6 +15262,14 @@
         {
           "date": "2026-08-28",
           "value": 1833.99
+        },
+        {
+          "date": "2026-09-04",
+          "value": 1837.01
+        },
+        {
+          "date": "2026-09-11",
+          "value": 1862.18
         }
       ]
     },
@@ -15246,13 +15282,13 @@
       "region": "EU",
       "source_url": "https://www.nlic.go.kr/nlic/seaDmstcOcn.action",
       "stats": {
-        "latest_date": "2026-07-01",
-        "latest_value": 1295.0,
+        "latest_date": "2026-08-01",
+        "latest_value": 1148.0,
         "max_date": "2022-07-01",
         "max_value": 2343.0,
         "min_date": "2024-01-01",
         "min_value": 902.0,
-        "yoy_change_pct": 7.6
+        "yoy_change_pct": 12.5
       },
       "observations": [
         {
@@ -15617,7 +15653,11 @@
         },
         {
           "date": "2026-07-01",
-          "value": 1295.0
+          "value": 1303.0
+        },
+        {
+          "date": "2026-08-01",
+          "value": 1148.0
         }
       ]
     },
@@ -15630,13 +15670,13 @@
       "region": "미국 동부",
       "source_url": "https://www.nlic.go.kr/nlic/seaDmstcOcn.action",
       "stats": {
-        "latest_date": "2026-07-01",
-        "latest_value": 1731.0,
+        "latest_date": "2026-08-01",
+        "latest_value": 1597.0,
         "max_date": "2025-10-01",
         "max_value": 3166.0,
         "min_date": "2021-01-01",
         "min_value": 1308.0,
-        "yoy_change_pct": 6.6
+        "yoy_change_pct": -34.5
       },
       "observations": [
         {
@@ -16001,7 +16041,11 @@
         },
         {
           "date": "2026-07-01",
-          "value": 1731.0
+          "value": 1736.0
+        },
+        {
+          "date": "2026-08-01",
+          "value": 1597.0
         }
       ]
     },
@@ -16014,13 +16058,13 @@
       "region": "미국 서부",
       "source_url": "https://www.nlic.go.kr/nlic/seaDmstcOcn.action",
       "stats": {
-        "latest_date": "2026-07-01",
-        "latest_value": 2533.0,
+        "latest_date": "2026-08-01",
+        "latest_value": 2585.0,
         "max_date": "2025-10-01",
         "max_value": 4723.0,
         "min_date": "2019-09-01",
         "min_value": 1548.0,
-        "yoy_change_pct": -7.8
+        "yoy_change_pct": -0.3
       },
       "observations": [
         {
@@ -16385,7 +16429,11 @@
         },
         {
           "date": "2026-07-01",
-          "value": 2533.0
+          "value": 2530.0
+        },
+        {
+          "date": "2026-08-01",
+          "value": 2585.0
         }
       ]
     },
@@ -16398,13 +16446,13 @@
       "region": "베트남",
       "source_url": "https://www.nlic.go.kr/nlic/seaDmstcOcn.action",
       "stats": {
-        "latest_date": "2026-07-01",
-        "latest_value": 1325.0,
+        "latest_date": "2026-08-01",
+        "latest_value": 1255.0,
         "max_date": "2021-09-01",
         "max_value": 3277.0,
         "min_date": "2019-06-01",
         "min_value": 394.0,
-        "yoy_change_pct": 11.6
+        "yoy_change_pct": 4.6
       },
       "observations": [
         {
@@ -16769,7 +16817,11 @@
         },
         {
           "date": "2026-07-01",
-          "value": 1325.0
+          "value": 1320.0
+        },
+        {
+          "date": "2026-08-01",
+          "value": 1255.0
         }
       ]
     },
@@ -16782,13 +16834,13 @@
       "region": "일본",
       "source_url": "https://www.nlic.go.kr/nlic/seaDmstcOcn.action",
       "stats": {
-        "latest_date": "2026-07-01",
-        "latest_value": 1139.0,
+        "latest_date": "2026-08-01",
+        "latest_value": 1265.0,
         "max_date": "2022-10-01",
         "max_value": 1723.0,
         "min_date": "2020-09-01",
         "min_value": 712.0,
-        "yoy_change_pct": 15.1
+        "yoy_change_pct": 24.1
       },
       "observations": [
         {
@@ -17149,11 +17201,15 @@
         },
         {
           "date": "2026-06-01",
-          "value": 1357.0
+          "value": 1359.0
         },
         {
           "date": "2026-07-01",
-          "value": 1139.0
+          "value": 1106.0
+        },
+        {
+          "date": "2026-08-01",
+          "value": 1265.0
         }
       ]
     },
@@ -17166,13 +17222,13 @@
       "region": "중국",
       "source_url": "https://www.nlic.go.kr/nlic/seaDmstcOcn.action",
       "stats": {
-        "latest_date": "2026-07-01",
-        "latest_value": 1583.0,
+        "latest_date": "2026-08-01",
+        "latest_value": 1520.0,
         "max_date": "2022-03-01",
         "max_value": 2975.0,
         "min_date": "2019-07-01",
         "min_value": 630.0,
-        "yoy_change_pct": 28.8
+        "yoy_change_pct": 24.4
       },
       "observations": [
         {
@@ -17537,7 +17593,11 @@
         },
         {
           "date": "2026-07-01",
-          "value": 1583.0
+          "value": 1589.0
+        },
+        {
+          "date": "2026-08-01",
+          "value": 1520.0
         }
       ]
     },
@@ -17550,13 +17610,13 @@
       "region": "EU",
       "source_url": "https://www.nlic.go.kr/nlic/seaDmstcOcn.action",
       "stats": {
-        "latest_date": "2026-07-01",
-        "latest_value": 5680.0,
+        "latest_date": "2026-08-01",
+        "latest_value": 5014.0,
         "max_date": "2022-06-01",
         "max_value": 13599.0,
         "min_date": "2020-08-01",
         "min_value": 1837.0,
-        "yoy_change_pct": 47.0
+        "yoy_change_pct": 36.2
       },
       "observations": [
         {
@@ -17897,11 +17957,11 @@
         },
         {
           "date": "2026-01-01",
-          "value": 3383.0
+          "value": 3385.0
         },
         {
           "date": "2026-02-01",
-          "value": 3155.0
+          "value": 3157.0
         },
         {
           "date": "2026-03-01",
@@ -17917,11 +17977,15 @@
         },
         {
           "date": "2026-06-01",
-          "value": 4164.0
+          "value": 4162.0
         },
         {
           "date": "2026-07-01",
-          "value": 5680.0
+          "value": 5535.0
+        },
+        {
+          "date": "2026-08-01",
+          "value": 5014.0
         }
       ]
     },
@@ -17934,13 +17998,13 @@
       "region": "미국 동부",
       "source_url": "https://www.nlic.go.kr/nlic/seaDmstcOcn.action",
       "stats": {
-        "latest_date": "2026-07-01",
-        "latest_value": 8143.0,
+        "latest_date": "2026-08-01",
+        "latest_value": 9973.0,
         "max_date": "2022-03-01",
         "max_value": 15341.0,
         "min_date": "2020-05-01",
         "min_value": 3238.0,
-        "yoy_change_pct": 26.9
+        "yoy_change_pct": 75.8
       },
       "observations": [
         {
@@ -18281,15 +18345,15 @@
         },
         {
           "date": "2026-01-01",
-          "value": 5396.0
+          "value": 5408.0
         },
         {
           "date": "2026-02-01",
-          "value": 5303.0
+          "value": 5312.0
         },
         {
           "date": "2026-03-01",
-          "value": 5256.0
+          "value": 5271.0
         },
         {
           "date": "2026-04-01",
@@ -18297,15 +18361,19 @@
         },
         {
           "date": "2026-05-01",
-          "value": 5604.0
+          "value": 5607.0
         },
         {
           "date": "2026-06-01",
-          "value": 7116.0
+          "value": 7114.0
         },
         {
           "date": "2026-07-01",
-          "value": 8143.0
+          "value": 7990.0
+        },
+        {
+          "date": "2026-08-01",
+          "value": 9973.0
         }
       ]
     },
@@ -18318,13 +18386,13 @@
       "region": "미국 서부",
       "source_url": "https://www.nlic.go.kr/nlic/seaDmstcOcn.action",
       "stats": {
-        "latest_date": "2026-07-01",
-        "latest_value": 8559.0,
+        "latest_date": "2026-08-01",
+        "latest_value": 8589.0,
         "max_date": "2021-12-01",
         "max_value": 15671.0,
         "min_date": "2019-11-01",
         "min_value": 2971.0,
-        "yoy_change_pct": 54.7
+        "yoy_change_pct": 59.4
       },
       "observations": [
         {
@@ -18665,23 +18733,23 @@
         },
         {
           "date": "2026-01-01",
-          "value": 4924.0
+          "value": 4933.0
         },
         {
           "date": "2026-02-01",
-          "value": 4699.0
+          "value": 4713.0
         },
         {
           "date": "2026-03-01",
-          "value": 5717.0
+          "value": 5646.0
         },
         {
           "date": "2026-04-01",
-          "value": 5046.0
+          "value": 5062.0
         },
         {
           "date": "2026-05-01",
-          "value": 5417.0
+          "value": 5465.0
         },
         {
           "date": "2026-06-01",
@@ -18689,7 +18757,11 @@
         },
         {
           "date": "2026-07-01",
-          "value": 8559.0
+          "value": 8547.0
+        },
+        {
+          "date": "2026-08-01",
+          "value": 8589.0
         }
       ]
     },
@@ -18702,13 +18774,13 @@
       "region": "베트남",
       "source_url": "https://www.nlic.go.kr/nlic/seaDmstcOcn.action",
       "stats": {
-        "latest_date": "2026-07-01",
-        "latest_value": 1762.0,
+        "latest_date": "2026-08-01",
+        "latest_value": 1558.0,
         "max_date": "2022-07-01",
         "max_value": 2423.0,
         "min_date": "2019-11-01",
         "min_value": 583.0,
-        "yoy_change_pct": 10.3
+        "yoy_change_pct": 0.1
       },
       "observations": [
         {
@@ -19049,15 +19121,15 @@
         },
         {
           "date": "2026-01-01",
-          "value": 1469.0
+          "value": 1472.0
         },
         {
           "date": "2026-02-01",
-          "value": 1315.0
+          "value": 1321.0
         },
         {
           "date": "2026-03-01",
-          "value": 1397.0
+          "value": 1401.0
         },
         {
           "date": "2026-04-01",
@@ -19065,15 +19137,19 @@
         },
         {
           "date": "2026-05-01",
-          "value": 1701.0
+          "value": 1709.0
         },
         {
           "date": "2026-06-01",
-          "value": 1645.0
+          "value": 1651.0
         },
         {
           "date": "2026-07-01",
-          "value": 1762.0
+          "value": 1713.0
+        },
+        {
+          "date": "2026-08-01",
+          "value": 1558.0
         }
       ]
     },
@@ -19086,13 +19162,13 @@
       "region": "일본",
       "source_url": "https://www.nlic.go.kr/nlic/seaDmstcOcn.action",
       "stats": {
-        "latest_date": "2026-07-01",
-        "latest_value": 694.0,
+        "latest_date": "2026-08-01",
+        "latest_value": 662.0,
         "max_date": "2020-06-01",
         "max_value": 1385.0,
         "min_date": "2025-10-01",
         "min_value": 549.0,
-        "yoy_change_pct": -2.9
+        "yoy_change_pct": -7.9
       },
       "observations": [
         {
@@ -19433,31 +19509,35 @@
         },
         {
           "date": "2026-01-01",
-          "value": 767.0
+          "value": 772.0
         },
         {
           "date": "2026-02-01",
-          "value": 844.0
+          "value": 850.0
         },
         {
           "date": "2026-03-01",
-          "value": 789.0
+          "value": 794.0
         },
         {
           "date": "2026-04-01",
-          "value": 754.0
+          "value": 759.0
         },
         {
           "date": "2026-05-01",
-          "value": 737.0
+          "value": 745.0
         },
         {
           "date": "2026-06-01",
-          "value": 689.0
+          "value": 691.0
         },
         {
           "date": "2026-07-01",
-          "value": 694.0
+          "value": 667.0
+        },
+        {
+          "date": "2026-08-01",
+          "value": 662.0
         }
       ]
     },
@@ -19470,13 +19550,13 @@
       "region": "중국",
       "source_url": "https://www.nlic.go.kr/nlic/seaDmstcOcn.action",
       "stats": {
-        "latest_date": "2026-07-01",
-        "latest_value": 859.0,
+        "latest_date": "2026-08-01",
+        "latest_value": 652.0,
         "max_date": "2021-12-01",
         "max_value": 1386.0,
         "min_date": "2020-06-01",
         "min_value": 470.0,
-        "yoy_change_pct": 41.3
+        "yoy_change_pct": 13.6
       },
       "observations": [
         {
@@ -19817,15 +19897,15 @@
         },
         {
           "date": "2026-01-01",
-          "value": 603.0
+          "value": 601.0
         },
         {
           "date": "2026-02-01",
-          "value": 550.0
+          "value": 553.0
         },
         {
           "date": "2026-03-01",
-          "value": 497.0
+          "value": 500.0
         },
         {
           "date": "2026-04-01",
@@ -19833,15 +19913,19 @@
         },
         {
           "date": "2026-05-01",
-          "value": 593.0
+          "value": 595.0
         },
         {
           "date": "2026-06-01",
-          "value": 679.0
+          "value": 682.0
         },
         {
           "date": "2026-07-01",
-          "value": 859.0
+          "value": 841.0
+        },
+        {
+          "date": "2026-08-01",
+          "value": 652.0
         }
       ]
     },
@@ -19854,13 +19938,13 @@
       "region": "Global",
       "source_url": "https://www.nlic.go.kr/nlic/transInPortCt.action",
       "stats": {
-        "latest_date": "2026-08-28",
-        "latest_value": 3509.53,
+        "latest_date": "2026-09-11",
+        "latest_value": 3662.18,
         "max_date": "2022-01-07",
         "max_value": 5109.6,
         "min_date": "2016-03-18",
         "min_value": 400.43,
-        "yoy_change_pct": 148.0
+        "yoy_change_pct": 153.5
       },
       "observations": [
         {
@@ -22338,6 +22422,14 @@
         {
           "date": "2026-08-28",
           "value": 3509.53
+        },
+        {
+          "date": "2026-09-04",
+          "value": 3590.05
+        },
+        {
+          "date": "2026-09-11",
+          "value": 3662.18
         }
       ]
     }
