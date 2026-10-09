@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-08T00:42:26.145135+00:00",
+  "generated_at": "2026-10-09T00:58:31.091514+00:00",
   "indicators": [
     {
       "code": "WB_PORT_TRAFFIC_CHN",
@@ -514,13 +514,13 @@
       "region": "Global",
       "source_url": "https://www.nlic.go.kr/nlic/transInPortCt.action",
       "stats": {
-        "latest_date": "2026-10-06",
-        "latest_value": 3002.0,
+        "latest_date": "2026-10-07",
+        "latest_value": 2994.0,
         "max_date": "2021-10-07",
         "max_value": 5650.0,
         "min_date": "2016-02-10",
         "min_value": 290.0,
-        "yoy_change_pct": 55.4
+        "yoy_change_pct": 53.8
       },
       "observations": [
         {
@@ -12830,6 +12830,10 @@
         {
           "date": "2026-10-06",
           "value": 3002.0
+        },
+        {
+          "date": "2026-10-07",
+          "value": 2994.0
         }
       ]
     },
