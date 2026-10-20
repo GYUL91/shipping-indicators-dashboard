@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-18T22:45:40.433086+00:00",
+  "generated_at": "2026-10-20T00:06:12.008355+00:00",
   "indicators": [
     {
       "code": "WB_PORT_TRAFFIC_CHN",
@@ -514,13 +514,13 @@
       "region": "Global",
       "source_url": "https://www.nlic.go.kr/nlic/transInPortCt.action",
       "stats": {
-        "latest_date": "2026-10-15",
-        "latest_value": 2545.0,
+        "latest_date": "2026-10-16",
+        "latest_value": 2511.0,
         "max_date": "2021-10-07",
         "max_value": 5650.0,
         "min_date": "2016-02-10",
         "min_value": 290.0,
-        "yoy_change_pct": 27.4
+        "yoy_change_pct": 22.7
       },
       "observations": [
         {
@@ -12858,6 +12858,10 @@
         {
           "date": "2026-10-15",
           "value": 2545.0
+        },
+        {
+          "date": "2026-10-16",
+          "value": 2511.0
         }
       ]
     },
@@ -12870,13 +12874,13 @@
       "region": "Global",
       "source_url": "https://www.nlic.go.kr/nlic/transInPortCt.action",
       "stats": {
-        "latest_date": "2026-10-09",
-        "latest_value": 1912.38,
+        "latest_date": "2026-10-16",
+        "latest_value": 1922.64,
         "max_date": "2022-02-11",
         "max_value": 3587.91,
         "min_date": "2016-04-29",
         "min_value": 632.36,
-        "yoy_change_pct": 75.9
+        "yoy_change_pct": 89.5
       },
       "observations": [
         {
@@ -15378,6 +15382,10 @@
         {
           "date": "2026-10-09",
           "value": 1912.38
+        },
+        {
+          "date": "2026-10-16",
+          "value": 1922.64
         }
       ]
     },
@@ -20094,13 +20102,13 @@
       "region": "Global",
       "source_url": "https://www.nlic.go.kr/nlic/transInPortCt.action",
       "stats": {
-        "latest_date": "2026-10-09",
-        "latest_value": 3664.11,
+        "latest_date": "2026-10-16",
+        "latest_value": 3679.58,
         "max_date": "2022-01-07",
         "max_value": 5109.6,
         "min_date": "2016-03-18",
         "min_value": 400.43,
-        "yoy_change_pct": 228.8
+        "yoy_change_pct": 217.1
       },
       "observations": [
         {
@@ -22602,6 +22610,10 @@
         {
           "date": "2026-10-09",
           "value": 3664.11
+        },
+        {
+          "date": "2026-10-16",
+          "value": 3679.58
         }
       ]
     }
